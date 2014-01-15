@@ -1,0 +1,6 @@
+### Call R for plotting
+	my $pdffile = "SHOREmap.winstep".$window_step.".winsize".$window_size.".pdf";
+	my $cmd = "R --slave --vanilla --args ".$chrsizes." ".$pdffile." ".$outputfile." ".$window_step." ".$window_size."  < /Users/tang58/scripts_all/perl_code/Kai_modified_SHOREmap/Kai_SHOREmap.R";
+	#          1  2       3          4         5           6
+	print STDERR $cmd, "\n";
+	system($cmd); 
