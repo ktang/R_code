@@ -1,6 +1,9 @@
 # us letter 8.5 X 11 inch
 # R --slave --vanilla --args  indir input_file_name  output_pre l1,l2 < /Users/tang58/scripts_all/R_scripts/heatmap/R_heatmap_for_meth_level_in_sRNA_region_command_input_cmd_input.r
 
+#margins=c(5,5),# margins=c(18,5), for long label 
+
+
 args = commandArgs( trailingOnly =  T)  
 
 lwd_line = 1;#0.8 # 2
@@ -46,7 +49,7 @@ height_val = 6
 units_val = "in"; res_val = 500; pointsize_val =8;
 
 
-cex_lab_val = 2 #cex.lab =  1.5, 
+cex_lab_val = 1.2#2 #cex.lab =  1.5, 
 cex_axis_val = 1.5; #cex.axis = 1.5, 
 cex.main = 2
 
@@ -58,10 +61,11 @@ png(file_name, width = width_val, height = height_val, units = units_val , res =
 
 #mar_ori = par("mar")
 #par(oma = c(5, 5, 1, 0) ) #down left up rigth
-#par(mar= rep(2, 4))
+#par(mar= rep(2, 4))# nothing
 
-#par(mar = c(15, 4, 4, 2)) # nothing
-par(oma = c(7, 3, 1, 0) )
+
+#par(mai = c(15, 4, 4, 2))
+#par(oma = c(7, 3, 1, 0) )
 
 #x = x [, c(  "raw_wmCG_colA_nodupl2",  "raw_wmCG_rrp6L1.2A_nodupl",  "raw_wmCG_nrpd1.3A_nodupl",  "raw_wmCG_nrpe1.11A_nodupl", 
 #"raw_wmCHG_colA_nodupl2", "raw_wmCHG_rrp6L1.2A_nodupl", "raw_wmCHG_nrpd1.3A_nodupl", "raw_wmCHG_nrpe1.11A_nodupl", 
@@ -88,7 +92,9 @@ scale="none", Rowv=NA, Colv=NA,
 col = myCol, ## using your colors
 breaks = myBreaks, ## using your breaks
 dendrogram = "none",  ## to suppress warnings
-margins=c(5,5), cexRow=0.5, cexCol=1.0, key=TRUE, keysize=1.5,
+margins=c(5,5), #default
+# margins=c(18,5), #for long label 
+cexRow=0.5, cexCol=1.0, key=TRUE, keysize=1.5,
 trace="none",
 rowsep = c(0,dim(x)[1]),
 colsep = 1:dim(x)[2],

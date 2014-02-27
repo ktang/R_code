@@ -9,18 +9,17 @@
 #wt = read.table("rrp6L1_hypo_852loci_sRNA_detail_in_WT_20_25bp.txt",head=T)
 #rrp = read.table("rrp6L1_hypo_852loci_sRNA_detail_in_rrp6L1_20_25bp.txt", head=T)
 
-# R --slave --vanilla --args  input_WT label_WT  input_mut label_mut  output_pre <  
-# /Users/tang58/scripts_all/R_scripts/sRNA_heatmap/R_cmd_for_sRNA_heatmap_Aug24_cmd.r
-
-#R_script
+########## R --slave --vanilla --args  input_WT label_WT  input_mut label_mut  output_pre < R_script
+# R --slave --vanilla --args  input_DSR_list label_WT  label_mut  output_pre < /Users/tang58/scripts_all/R_scripts/sRNA_heatmap/R_cmd_for_sRNA_heatmap_cmd_DSR_list_input.r
 args = commandArgs( trailingOnly =  T)  
 
-wt_file   = args[1]
+DSR_list = args[1]
+#wt_file   = args[1]
 wt_name  = args[2]
-mut_file  = args[3]
-mut_name = args[4]
+#mut_file  = args[3]
+mut_name = args[3]
 
-png_pre = args[5]
+png_pre = args[4]
 
 #png_pre = "rrp6l1_574_specific_loci_sRNA_all"
 width_val = 8 # 3.8; 
@@ -34,8 +33,11 @@ library(gplots)
 
 #wt_all  = read.table("574_loci_specific2rrp6l1-2_sRNA_detail_in_HMWT.txt", head=T)
 #rrp_all = read.table("574_loci_specific2rrp6l1-2_sRNA_detail_in_rrp6l1.txt", head=T)
-wt_all = read.table( wt_file, head=T)
-rrp_all = read.table(mut_file, head=T)
+#wt_all = read.table( wt_file, head=T)
+#rrp_all = read.table(mut_file, head=T)
+
+data_all = read.table(DSR_list, head=T)
+
 
 #x = cbind ( rrp_all[, c( "X20bp_HNA_HM_WT", "X21bp_HNA_HM_WT", "X22bp_HNA_HM_WT", "X23bp_HNA_HM_WT", "X24bp_HNA_HM_WT", "X25bp_HNA_HM_WT")], 
 #			wt_all [, c( "X20bp_HNA_rrp6l1", "X21bp_HNA_rrp6l1", "X22bp_HNA_rrp6l1", "X23bp_HNA_rrp6l1", "X24bp_HNA_rrp6l1", "X25bp_HNA_rrp6l1")])
@@ -52,8 +54,8 @@ wt_label  = paste("X",base_seq, "bp_HNA_", wt_name,sep="")
 #x = cbind ( rrp_all[, c( "X20bp_HNA_rrp6l1", "X21bp_HNA_rrp6l1", "X22bp_HNA_rrp6l1", "X23bp_HNA_rrp6l1", "X24bp_HNA_rrp6l1", "X25bp_HNA_rrp6l1")], 
 #			 wt_all [, c( "X20bp_HNA_HM_WT", "X21bp_HNA_HM_WT", "X22bp_HNA_HM_WT", "X23bp_HNA_HM_WT", "X24bp_HNA_HM_WT", "X25bp_HNA_HM_WT")])
 
-x = cbind ( rrp_all[, rrp_label],
-			wt_all [, wt_label])
+#x = cbind ( rrp_all[, rrp_label], 			wt_all [, wt_label])
+x = cbind( data_all [, c(rrp_label, wt_label)])
 
 #x = cbind( rrp[,2:7], wt[,2:7] )
 #x50 = x [ x[,6] + x[,12] >= 50  ,]

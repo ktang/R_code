@@ -1,4 +1,5 @@
-# R --slave --vanilla --args  png_pre  indir < /Users/tang58/Kai_BS/for_publish/draw_distribution_in_chr_use_v0.1_bed_format_multiple_input.R
+# R --slave --vanilla --args  png_pre  indir < /Users/tang58/scripts_all/R_scripts/draw_loci_distribution_in_5_chr/draw_distribution_in_chr_use_v0.1_bed_format_multiple_input.R
+
 args = commandArgs( trailingOnly =  T)  
 png_pre		 = args[1]
 indir        = args[2]
@@ -114,7 +115,8 @@ text( c(1,2,3,4,5), rep(text_y, 5), # c(5000,5000,5000,5000,5000),
   labels = c( "chr1","chr2","chr3","chr4","chr5"  )  ,pos=3, cex = 2);
 
 #par(xpd=NA)
-legend( 0 , -32000000,legend= x_lables , col = cols_db, lwd = 4, bty = "n",  cex = 1.2
+legend( 0 ,-32000000,
+legend= x_lables , col = cols_db, lwd = 4, bty = "n",  cex = 1.2
 ,   ncol = length
 )
 
